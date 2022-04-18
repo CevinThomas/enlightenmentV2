@@ -7,23 +7,31 @@ import {
 } from "./repository";
 
 export const createCategory = async (req: Request, res: Response) => {
-  await createCategoryRep();
-  res.send();
+  try {
+    await createCategoryRep(req.body);
+    res.send();
+  } catch (e) {}
 };
 
 export const fetchAllCategories = async (req: Request, res: Response) => {
-  await fetchAllCategoriesRep();
-  res.send();
+  try {
+    await fetchAllCategoriesRep();
+    res.send();
+  } catch (e) {}
 };
 
 export const fetchCategory = async (req: Request, res: Response) => {
-  const { categoryId } = req.params;
-  await fetchCategoryRep(+categoryId);
-  res.send();
+  try {
+    const { categoryId } = req.params;
+    await fetchCategoryRep(+categoryId);
+    res.send();
+  } catch (e) {}
 };
 
 export const deleteCategory = async (req: Request, res: Response) => {
-  const { categoryId } = req.params;
-  await deleteCategoryRep(+categoryId);
-  res.send();
+  try {
+    const { categoryId } = req.params;
+    await deleteCategoryRep(+categoryId);
+    res.send();
+  } catch (e) {}
 };
