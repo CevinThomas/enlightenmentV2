@@ -1,37 +1,30 @@
-import { Request, Response } from "express";
-import {
-  createCategoryRep,
-  deleteCategoryRep,
-  fetchAllCategoriesRep,
-  fetchCategoryRep,
-} from "./repository";
+import {Request, Response} from "express";
+import {createCategoryRep, deleteCategoryRep, fetchAllCategoriesRep, fetchCategoryRep,} from "./repository";
 
 export const createCategory = async (req: Request, res: Response) => {
   try {
     await createCategoryRep(req.body);
-    res.send();
+    res.status(204).send();
   } catch (e) {}
 };
 
 export const fetchAllCategories = async (req: Request, res: Response) => {
   try {
-    await fetchAllCategoriesRep();
-    res.send();
+
+    res.send(await fetchAllCategoriesRep();)
   } catch (e) {}
 };
 
 export const fetchCategory = async (req: Request, res: Response) => {
   try {
     const { categoryId } = req.params;
-    await fetchCategoryRep(+categoryId);
-    res.send();
+    res.send(await fetchCategoryRep(+categoryId);)
   } catch (e) {}
 };
 
 export const deleteCategory = async (req: Request, res: Response) => {
   try {
     const { categoryId } = req.params;
-    await deleteCategoryRep(+categoryId);
-    res.send();
+    res.send(await deleteCategoryRep(+categoryId);)
   } catch (e) {}
 };

@@ -11,7 +11,16 @@ export const createCategoryRep = async (
   } catch (e) {}
 };
 
-export const fetchAllCategoriesRep = () => {};
+export const fetchAllCategoriesRep = async () => {
+  try {
+    await db.query(sql`
+    SELECT categories.title, array_agg(tags.title) 
+      FROM categories
+      LEFT JOIN tags on categories.category_id = tags.category_id
+      GROUP BY categories.title
+`);
+  } catch (e) {}
+};
 
 export const fetchCategoryRep = (categoryId: number) => {};
 
