@@ -1,11 +1,14 @@
 import express, { Request, Response } from "express";
-import router from "./src/Categories/routes";
+import categoriesRouter from "./src/Categories/routes";
+import tagsRouter from "./src/Tags/routes";
+
 require("dotenv").config();
 const app = express();
 
 app.get("/health", (req: Request, res: Response) => res.send("Healthy!"));
 
-app.get("/categories", router);
+app.get("/categories", categoriesRouter);
+app.get("/tags", tagsRouter);
 
 const port = process.env.PORT;
 
