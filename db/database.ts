@@ -1,6 +1,7 @@
 import createConnectionPool, { sql } from "@databases/pg";
 
-export { sql };
+require("dotenv").config();
 
+export { sql };
 const db = createConnectionPool();
 export default db;
