@@ -7,15 +7,29 @@ import {
   updateLicenceGroup,
 } from "./controller";
 import { createValidator } from "express-joi-validation";
-import { insertLicenceValidators } from "./validators";
+import {
+  fetchLicenceValidator,
+  licencePayloadValidator,
+  updateLicenceValidator,
+  withUsersQuery,
+} from "./validators";
 
 const router = express.Router();
 const validator = createValidator({ passError: true });
 
-router.post("/", validator.body(insertLicenceValidators), createLicenceGroup);
-router.get("/", fetchAllLicenceGroups);
-router.get("/:licenceGroupId", fetchSingleLicenceGroup);
-router.patch("/:licenceGroupId", updateLicenceGroup);
+router.post("/", validator.body(licencePayloadValidator), createLicenceGroup);
+router.get("/", validator.query(withUsersQuery), fetchAllLicenceGroups);
+router.get(
+  "/:licenceGroupId",
+  validator.params(fetchLicenceValidator),
+  fetchSingleLicenceGroup
+);
+router.patch(
+  "/:licenceGroupId",
+  validator.body(updateLicenceValidator),
+  updateLicenceGroup
+);
 router.delete("/:licenceGroupId", deleteLicenceGroup);
 
+//TODO: Get users per licenceGroup?
 export default router;
