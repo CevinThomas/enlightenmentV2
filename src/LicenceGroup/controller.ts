@@ -66,7 +66,7 @@ export const updateLicenceGroup = async (req: Request, res: Response) => {
 export const getUsersByLicenceGroup = async (req: Request, res: Response) => {
   try {
     const { licenceGroupId } = req.params;
-    await getUsersByLicenceGroupRep(licenceGroupId);
+    res.status(200).send(await getUsersByLicenceGroupRep(licenceGroupId));
   } catch (e) {
     res.status(500).send();
   }
