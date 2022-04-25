@@ -1,4 +1,5 @@
 import {
+  createGroupOfQuestionsRep,
   createQuestionsRep,
   deleteQuestionRep,
   fetchAllQuestionsRep,
@@ -6,9 +7,16 @@ import {
 } from "./repository";
 import { Request, Response } from "express";
 
+export const createGroupOfQuestions = async (req: Request, res: Response) => {
+  try {
+    await createGroupOfQuestionsRep(req.body);
+  } catch (e) {}
+};
+
 export const createQuestions = async (req: Request, res: Response) => {
   try {
-    await createQuestionsRep();
+    await createQuestionsRep(req.body);
+    res.status(204).send();
   } catch (e) {}
 };
 

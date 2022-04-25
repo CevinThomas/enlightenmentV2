@@ -6,7 +6,7 @@ export const createCategoryRep = async (
 ) => {
   try {
     await db.query(sql`
-    INSERT INTO categories (title) VALUES (${createPayload.title})
+    INSERT INTO categories (title, licence_id) VALUES (${createPayload.title}, ${createPayload.licenceId})
 `);
   } catch (e) {}
 };
@@ -14,10 +14,8 @@ export const createCategoryRep = async (
 export const fetchAllCategoriesRep = async () => {
   try {
     return await db.query(sql`
-    SELECT categories.title, array_agg(tags.title) 
-      FROM categories
-      LEFT JOIN tags on categories.category_id = tags.category_id
-      GROUP BY categories.title
+    SELECT categories.title, categories.licence_id
+    FROM categories
 `);
   } catch (e) {}
 };

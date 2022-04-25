@@ -72,7 +72,8 @@ END $$;
         question_id SERIAL PRIMARY KEY,
         title varchar(50),
         description varchar(100),
-        timeToAnswer INT NULL 
+        timeToAnswer INT NULL,
+        subject_id INT REFERENCES subjects(subject_id)
     )
   `);
 

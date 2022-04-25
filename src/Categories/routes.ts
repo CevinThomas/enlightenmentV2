@@ -12,7 +12,7 @@ const validator = createValidator({ passError: true });
 
 const router = express.Router();
 
-router.post("/", validator.query(createCategoryValidator), createCategory);
+router.post("/", validator.body(createCategoryValidator), createCategory);
 router.get("/", fetchAllCategories);
 router.get("/:subjectId", validator.params(singleCategory), fetchCategory);
 router.delete("/:subjectId", validator.params(singleCategory), deleteCategory);
