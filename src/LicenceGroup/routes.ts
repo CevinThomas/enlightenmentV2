@@ -19,6 +19,7 @@ const validator = createValidator({ passError: true });
 
 router.post("/", validator.body(licencePayloadValidator), createLicenceGroup);
 router.get("/", validator.query(withUsersQuery), fetchAllLicenceGroups);
+router.get("/:licenceGroupId/users", validator.params(fetchLicenceValidator));
 router.get(
   "/:licenceGroupId",
   validator.params(fetchLicenceValidator),

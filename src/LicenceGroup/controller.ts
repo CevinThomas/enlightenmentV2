@@ -3,6 +3,7 @@ import {
   deleteLicenceGroupRep,
   getAllLicenceGroups,
   getSingleLicenceGroup,
+  getUsersByLicenceGroupRep,
   insertLicenceGroup,
   updateLicenceGroupRep,
 } from "./repository";
@@ -32,6 +33,7 @@ export const fetchAllLicenceGroups = async (req: Request, res: Response) => {
 export const fetchSingleLicenceGroup = async (req: Request, res: Response) => {
   try {
     const { licenceGroupId } = req.params;
+    //TODO: Remove The query in this route
     const { withUsers } = req.query;
     res
       .status(200)
@@ -58,5 +60,14 @@ export const updateLicenceGroup = async (req: Request, res: Response) => {
     res.status(200).send();
   } catch (e) {
     res.status(500).send(e);
+  }
+};
+
+export const getUsersByLicenceGroup = async (req: Request, res: Response) => {
+  try {
+    const { licenceGroupId } = req.params;
+    await getUsersByLicenceGroupRep(licenceGroupId);
+  } catch (e) {
+    res.status(500).send();
   }
 };

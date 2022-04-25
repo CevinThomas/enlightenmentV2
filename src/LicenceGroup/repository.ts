@@ -70,6 +70,16 @@ export const getSingleLicenceGroup = async (
   }
 };
 
+export const getUsersByLicenceGroupRep = async (licenceGroupId: string) => {
+  try {
+    return await db.query(sql`
+      SELECT name, user_role
+      FROM users
+        WHERE licence_id = ${licenceGroupId}
+    `);
+  } catch (e) {}
+};
+
 export const deleteLicenceGroupRep = async (licenceGroupId: string) => {
   try {
     await db.tx(async (db) => {
