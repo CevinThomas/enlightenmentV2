@@ -14,20 +14,18 @@ export const createCategoryRep = async (
 export const fetchAllCategoriesRep = async () => {
   try {
     return await db.query(sql`
-    SELECT categories.title, categories.licence_id
+    SELECT categories.title, category_id, categories.licence_id
     FROM categories
 `);
   } catch (e) {}
 };
 
-export const fetchCategoryRep = async (categoryId: number) => {
+export const fetchCategoryPerLicenceRep = async (categoryId: string) => {
   try {
-    await db.query(sql`
-        SELECT categories.title, array_agg(tags.title)
+    return await db.query(sql`
+        SELECT title
         FROM categories
-        LEFT JOIN tags on categories.category_id = tags.category_id
-        WHERE tags.category_id = ${categoryId}
-          GROUP BY categories.title
+       WHERE licence_id = ${categoryId}
 `);
   } catch (e) {}
 };

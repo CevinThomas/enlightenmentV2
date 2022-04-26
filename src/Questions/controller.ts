@@ -1,17 +1,10 @@
 import {
-  createGroupOfQuestionsRep,
   createQuestionsRep,
   deleteQuestionRep,
   fetchAllQuestionsRep,
   fetchSingleQuestionRep,
 } from "./repository";
 import { Request, Response } from "express";
-
-export const createGroupOfQuestions = async (req: Request, res: Response) => {
-  try {
-    await createGroupOfQuestionsRep(req.body);
-  } catch (e) {}
-};
 
 export const createQuestions = async (req: Request, res: Response) => {
   try {

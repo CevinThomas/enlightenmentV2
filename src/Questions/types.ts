@@ -1,7 +1,11 @@
 export type QuestionsPayload = {
-  title: string;
-  description: string;
-  timeToAnswer: number;
+  questions: SingleQuestion[];
+  subjectId: number;
+  categoryId: number;
 };
 
-export type GroupOfQuestionsPayload = {};
+export type SingleQuestion = {
+  title: string;
+  description: string;
+  timeToAnswer: string;
+};

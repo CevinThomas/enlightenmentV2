@@ -6,5 +6,5 @@ export const createCategoryValidator = Joi.object({
 });
 
 export const singleCategory = Joi.object({
-  category_id: Joi.number().required(),
+  categoryId: Joi.string().required(),
 });

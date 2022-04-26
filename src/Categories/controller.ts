@@ -3,7 +3,7 @@ import {
   createCategoryRep,
   deleteCategoryRep,
   fetchAllCategoriesRep,
-  fetchCategoryRep,
+  fetchCategoryPerLicenceRep,
 } from "./repository";
 
 export const createCategory = async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const fetchAllCategories = async (req: Request, res: Response) => {
 export const fetchCategory = async (req: Request, res: Response) => {
   try {
     const { categoryId } = req.params;
-    res.send(await fetchCategoryRep(+categoryId));
+    res.send(await fetchCategoryPerLicenceRep(categoryId));
   } catch (e) {}
 };
 

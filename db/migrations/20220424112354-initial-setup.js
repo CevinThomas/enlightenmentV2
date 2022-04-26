@@ -41,6 +41,14 @@ END $$;
     `);
 
   await pgm.runSql(`
+        CREATE TABLE IF NOT EXISTS questions_group (
+        group_id SERIAL PRIMARY KEY,
+        name VARCHAR(50),
+        description VARCHAR(200)
+        )
+    `);
+
+  await pgm.runSql(`
     CREATE TABLE IF NOT EXISTS users (
         user_id uuid PRIMARY KEY,
         name varchar(255),
@@ -73,7 +81,9 @@ END $$;
         title varchar(50),
         description varchar(100),
         timeToAnswer INT NULL,
-        subject_id INT REFERENCES subjects(subject_id)
+        subject_id INT REFERENCES subjects(subject_id),
+        category_id INT REFERENCES categories(category_id),
+        group_id INT REFERENCES questions_group(group_id)
     )
   `);
 
@@ -98,14 +108,6 @@ END $$;
         CREATE TABLE IF NOT EXISTS questions_licence (
             question_id INT REFERENCES questions(question_id),
             licence_id uuid REFERENCES licence_group(licence_id)
-        )
-    `);
-
-  await pgm.runSql(`
-        CREATE TABLE IF NOT EXISTS questions_group (
-            group_id SERIAL PRIMARY KEY,
-            question_id INT REFERENCES questions(question_id),
-            subject_id INT REFERENCES subjects(subject_id)
         )
     `);
 };

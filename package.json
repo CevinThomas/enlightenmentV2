@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@databases/pg": "^5.4.1",
+    "@databases/pg-bulk": "^1.2.0",
     "@sentry/node": "^6.19.6",
     "@sentry/tracing": "^6.19.6",
     "@types/express": "^4.17.13",

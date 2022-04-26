@@ -75,6 +75,11 @@
     parameter-reducers "^2.0.0"
     semver "^7.3.2"
 
+"@databases/pg-bulk@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@databases/pg-bulk/-/pg-bulk-1.2.0.tgz#88d7ee371e98c3660188556da0acae20e1ae5c2f"
+  integrity sha512-GdzwFIllgOtuKbro4r6QBe0+4LipaUwb8+N7+z9QP+wg3XozGLnojnMFQlBrrc70jycw4aCM1O30w4vYtVlR/Q==
+
 "@databases/pg-config@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@databases/pg-config/-/pg-config-3.1.0.tgz#305519129909724f548d8192cfd3aa464be895a6"

@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post("/", validator.body(createCategoryValidator), createCategory);
 router.get("/", fetchAllCategories);
-router.get("/:subjectId", validator.params(singleCategory), fetchCategory);
-router.delete("/:subjectId", validator.params(singleCategory), deleteCategory);
+router.get("/:categoryId", validator.params(singleCategory), fetchCategory);
+router.delete("/:categoryId", validator.params(singleCategory), deleteCategory);
 
 export default router;
