@@ -8,12 +8,13 @@ export const createQuestionsRep = async ({
   categoryId,
   groupDesc,
   groupName,
+  licenceId,
 }: QuestionsPayload) => {
   try {
     await db.tx(async (db) => {
       const [groupIdObj] = await db.query(sql`
-        INSERT INTO questions_group (name, description)
-        VALUES (${groupName}, ${groupDesc})
+        INSERT INTO questions_group (name, description, licence_id)
+        VALUES (${groupName}, ${groupDesc}, ${licenceId})
         RETURNING group_id
       `);
 
@@ -51,6 +52,23 @@ export const createQuestionsRep = async ({
     console.warn(e);
   }
 };
-export const fetchAllQuestionsRep = async () => {};
+
+export const getAllQuestionsPerLicenceRep = async (licenceId: string) => {
+  try {
+    return await db.query(sql`
+        SELECT q.title, q.description, q.timetoanswer, array_agg(c) AS choices
+        FROM questions q
+          INNER JOIN questions_group qg ON q.group_id = qg.group_id
+        INNER JOIN choices c on q.question_id = c.question_id
+        WHERE qg.licence_id = ${licenceId}
+        GROUP BY q.title, q.description, q.timetoanswer
+`);
+  } catch (e) {}
+};
+
+export const fetchAllQuestionsRep = async () => {
+  try {
+  } catch (e) {}
+};
 export const fetchSingleQuestionRep = async () => {};
 export const deleteQuestionRep = async () => {};

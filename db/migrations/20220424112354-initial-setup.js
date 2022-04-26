@@ -44,7 +44,8 @@ END $$;
         CREATE TABLE IF NOT EXISTS questions_group (
         group_id SERIAL PRIMARY KEY,
         name VARCHAR(50),
-        description VARCHAR(200)
+        description VARCHAR(200),
+        licence_id uuid REFERENCES licence_group(licence_id) NOT NULL 
         )
     `);
 

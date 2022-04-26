@@ -15,6 +15,7 @@ export const questionsPayload = Joi.object({
   categoryId: Joi.number().required(),
   groupName: Joi.string().required(),
   groupDesc: Joi.string().optional().default(""),
+  licenceId: Joi.string().required().min(36).max(36),
 });
 
 export const groupOfQuestionsPayload = Joi.object({

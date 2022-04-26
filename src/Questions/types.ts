@@ -6,6 +6,7 @@ export type QuestionsPayload = {
   categoryId: number;
   groupName: string;
   groupDesc: string;
+  licenceId: string;
 };
 
 export type SingleQuestion = {
