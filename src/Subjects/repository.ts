@@ -13,7 +13,7 @@ export const createSubjectRep = async (payload: SubjectPayload) => {
 export const getAllSubjectsRep = async () => {
   try {
     return await db.query(sql`
-        SELECT title, description, category_id, licence_id
+        SELECT title, description, category_id, licence_id, subject_id
           FROM subjects
 `);
   } catch (e) {}

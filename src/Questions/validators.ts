@@ -13,6 +13,8 @@ export const questionsPayload = Joi.object({
     .min(1),
   subjectId: Joi.number().required(),
   categoryId: Joi.number().required(),
+  groupName: Joi.string().required(),
+  groupDesc: Joi.string().optional().default(""),
 });
 
 export const groupOfQuestionsPayload = Joi.object({

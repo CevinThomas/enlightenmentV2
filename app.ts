@@ -5,6 +5,7 @@ import questionsRouter from "./src/Questions/routes";
 import subjectsRouter from "./src/Subjects/routes";
 import choicesRouter from "./src/Choices/routes";
 import licenceGroupRouter from "./src/LicenceGroup/routes";
+import answersRouter from "./src/Answers/routes";
 import usersRouter from "./src/Users/routes";
 import * as Sentry from "@sentry/node";
 import * as Tracing from "@sentry/tracing";
@@ -42,6 +43,7 @@ app.use("/api/choices", choicesRouter);
 app.use("/api/questions", questionsRouter);
 app.use("/api/licence", licenceGroupRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/answers", answersRouter);
 app.use(errorHandling);
 
 app.get("/api/debug-sentry", function mainHandler(req, res) {
