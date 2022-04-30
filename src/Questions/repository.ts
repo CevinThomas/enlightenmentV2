@@ -56,7 +56,7 @@ export const createQuestionsRep = async ({
 export const getAllQuestionsPerLicenceRep = async (licenceId: string) => {
   try {
     return await db.query(sql`
-        SELECT q.title, q.description, q.timetoanswer, array_agg(c) AS choices
+        SELECT q.title, q.description, q.timetoanswer, array_agg(json_build_object('title', c.title, 'correct', c.correct)) AS choices
         FROM questions q
           INNER JOIN questions_group qg ON q.group_id = qg.group_id
         INNER JOIN choices c on q.question_id = c.question_id
