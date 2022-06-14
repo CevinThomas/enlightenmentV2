@@ -1,10 +1,13 @@
-import type { Node } from "react";
 import React from "react";
-import { Text } from "react-native";
 import { AuthStackNavigator } from "./navigation/stacks";
+import { NavigationContainer } from "@react-navigation/native";
 
-const App: () => Node = () => {
-  return <AuthStackNavigator />;
+const App = () => {
+  return (
+    <NavigationContainer>
+      <AuthStackNavigator />
+    </NavigationContainer>
+  );
 };
 
 export default App;
