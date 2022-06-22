@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Button } from "react-native";
 import styled from "styled-components/native";
 import RootContainer from "../../../components/RootContainer";
+import { WelcomeScreenProps } from "../../../navigation/types";
 
 const Container = styled.View`
   flex: 1;
@@ -14,16 +15,21 @@ const BottomContainer = styled.View`
   bottom: 0;
   width: 100%;
   height: 80%;
-  border-top-left-radius: 20;
-  border-top-right-radius: 20;
 `;
 
-const Welcome = () => {
+const Welcome = ({ navigation }: WelcomeScreenProps) => {
   return (
     <RootContainer>
       <Container>
         <BottomContainer>
-          <Text>Hello</Text>
+          <Button
+            title={"Login"}
+            onPress={() => navigation.navigate("Login")}
+          />
+          <Button
+            title={"Register"}
+            onPress={() => navigation.navigate("Register")}
+          />
         </BottomContainer>
       </Container>
     </RootContainer>
