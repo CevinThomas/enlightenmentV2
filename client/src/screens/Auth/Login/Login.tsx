@@ -3,6 +3,7 @@ import { Button, StyleSheet, Text } from "react-native";
 import { LoginScreenProps } from "../../../navigation/types";
 import { useDispatch } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { loginUser } from "../../../redux/actions/UserActions";
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
       <Button
         title={"Login"}
         onPress={() => {
-          dispatch({ type: "LOGIN", payload: true });
+          loginUser(dispatch);
           dispatch({ type: "ONBOARD", payload: true });
         }}
       />

@@ -1,16 +1,13 @@
 import React from "react";
-import { Button, StyleSheet, Text } from "react-native";
+import { Button, StyleSheet } from "react-native";
 import { RegisterScreenProps } from "../../../navigation/types";
-import { useDispatch, useSelector } from "react-redux";
-import { GlobalState } from "../../../redux/store";
+import { useDispatch } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Register = ({ navigation }: RegisterScreenProps) => {
   const dispatch = useDispatch();
-  const state = useSelector((state: GlobalState) => state.user);
   return (
     <SafeAreaView style={styles.container}>
-      <Text>{state.loggedIn.toString()}</Text>
       <Button
         title={"Complete Registration"}
         onPress={() => dispatch({ type: "LOGIN", payload: true })}

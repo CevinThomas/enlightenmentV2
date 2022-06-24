@@ -7,7 +7,9 @@ import {
   DashboardStackParams,
   ExploreStackParams,
   HelpStackParams,
+  MainStackParams,
   OnboardStackParams,
+  QuizStackParams,
 } from "./types";
 import Register from "../screens/Auth/Register/Register";
 import Login from "../screens/Auth/Login/Login";
@@ -16,6 +18,12 @@ import Role from "../screens/Onboarding/Role";
 import Explore from "../screens/Main/Explore/Explore";
 import Help from "../screens/Main/Help/Help";
 import PushRequest from "../screens/Onboarding/PushRequest";
+import Statistics from "../screens/Main/Dashboard/Statistics";
+import Quiz from "../screens/Main/Quiz/Quiz";
+import { BottomTabs } from "./bottomTab";
+import Results from "../screens/Main/Quiz/Results";
+import DashboardResults from "../screens/Main/Dashboard/Results";
+import Scoreboard from "../screens/Main/Dashboard/Scoreboard";
 
 const mainScreensOptions = {
   headerShown: false,
@@ -55,6 +63,21 @@ export const DashboardStackNavigator = () => {
         options={mainScreensOptions}
         name={"Main"}
         component={Dashboard}
+      />
+      <DashboardStack.Screen
+        options={mainScreensOptions}
+        name={"Statistics"}
+        component={Statistics}
+      />
+      <DashboardStack.Screen
+        options={mainScreensOptions}
+        name={"Results"}
+        component={DashboardResults}
+      />
+      <DashboardStack.Screen
+        options={mainScreensOptions}
+        name={"Scoreboard"}
+        component={Scoreboard}
       />
     </DashboardStack.Navigator>
   );
@@ -103,5 +126,30 @@ export const OnboardStackNavigator = () => {
         component={PushRequest}
       />
     </OnboardStack.Navigator>
+  );
+};
+
+const QuizStack = createNativeStackNavigator<QuizStackParams>();
+export const QuizStackNavigator = () => {
+  return (
+    <QuizStack.Navigator
+      screenOptions={{
+        statusBarHidden: true,
+        headerShown: false,
+      }}
+    >
+      <QuizStack.Screen name={"Main"} component={Quiz} />
+      <QuizStack.Screen name={"Results"} component={Results} />
+    </QuizStack.Navigator>
+  );
+};
+
+const MainStack = createNativeStackNavigator<MainStackParams>();
+export const MainStackNavigator = () => {
+  return (
+    <MainStack.Navigator screenOptions={mainScreensOptions}>
+      <MainStack.Screen name={"BottomTabs"} component={BottomTabs} />
+      <MainStack.Screen name={"Quiz"} component={QuizStackNavigator} />
+    </MainStack.Navigator>
   );
 };
