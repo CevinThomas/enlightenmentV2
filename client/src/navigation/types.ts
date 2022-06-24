@@ -31,13 +31,36 @@ export type DashboardStackParams = {
   Scoreboard: undefined;
 };
 
-export type ExploreStackParams = {
+export type DiscoverStackParams = {
   Main: undefined;
+  Quizzes: undefined;
+  Friend: undefined;
+  Category: undefined;
 };
 
 export type HelpStackParams = {
   Main: undefined;
 };
+
+export type CategoryScreenProps = NativeStackScreenProps<
+  DiscoverStackParams,
+  "Category"
+>;
+
+export type FriendScreenProps = NativeStackScreenProps<
+  DiscoverStackParams,
+  "Friend"
+>;
+
+export type DiscoverScreenProps = NativeStackScreenProps<
+  DiscoverStackParams,
+  "Main"
+>;
+
+export type QuizzesScreenProps = NativeStackScreenProps<
+  DiscoverStackParams,
+  "Quizzes"
+>;
 
 export type ScoreboardScreenProps = NativeStackScreenProps<
   DashboardStackParams,

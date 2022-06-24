@@ -5,7 +5,7 @@ import Welcome from "../screens/Auth/Welcome/Welcome";
 import {
   AuthStackParams,
   DashboardStackParams,
-  ExploreStackParams,
+  DiscoverStackParams,
   HelpStackParams,
   MainStackParams,
   OnboardStackParams,
@@ -15,7 +15,7 @@ import Register from "../screens/Auth/Register/Register";
 import Login from "../screens/Auth/Login/Login";
 import Department from "../screens/Onboarding/Department";
 import Role from "../screens/Onboarding/Role";
-import Explore from "../screens/Main/Explore/Explore";
+import Discover from "../screens/Main/Discover/Discover";
 import Help from "../screens/Main/Help/Help";
 import PushRequest from "../screens/Onboarding/PushRequest";
 import Statistics from "../screens/Main/Dashboard/Statistics";
@@ -24,6 +24,9 @@ import { BottomTabs } from "./bottomTab";
 import Results from "../screens/Main/Quiz/Results";
 import DashboardResults from "../screens/Main/Dashboard/Results";
 import Scoreboard from "../screens/Main/Dashboard/Scoreboard";
+import Quizzes from "../screens/Main/Discover/Quizzes";
+import Friend from "../screens/Main/Discover/Friend";
+import Category from "../screens/Main/Discover/Category";
 
 const mainScreensOptions = {
   headerShown: false,
@@ -42,14 +45,29 @@ export const HelpStackNavigator = () => {
   );
 };
 
-const ExploreStack = createNativeStackNavigator<ExploreStackParams>();
+const ExploreStack = createNativeStackNavigator<DiscoverStackParams>();
 export const ExploreStackNavigator = () => {
   return (
     <ExploreStack.Navigator>
       <ExploreStack.Screen
         options={mainScreensOptions}
         name={"Main"}
-        component={Explore}
+        component={Discover}
+      />
+      <ExploreStack.Screen
+        options={mainScreensOptions}
+        name={"Quizzes"}
+        component={Quizzes}
+      />
+      <ExploreStack.Screen
+        options={mainScreensOptions}
+        name={"Friend"}
+        component={Friend}
+      />
+      <ExploreStack.Screen
+        options={mainScreensOptions}
+        name={"Category"}
+        component={Category}
       />
     </ExploreStack.Navigator>
   );
