@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
+  Image,
   StyleSheet,
   Text,
   useWindowDimensions,
@@ -9,6 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabView } from "react-native-tab-view";
 import { DiscoverScreenProps } from "../../../navigation/types";
+import Modal from "react-native-modal";
 
 enum TabRoutes {
   Top,
@@ -30,6 +32,8 @@ const TabRoutesTitles = (TabRoute: TabRoutes): string => {
 
 const Discover = ({ navigation }: DiscoverScreenProps) => {
   const layout = useWindowDimensions();
+
+  const [viewQuizModal, setViewQuizModal] = useState(false);
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -129,6 +133,19 @@ const Discover = ({ navigation }: DiscoverScreenProps) => {
           }}
         >
           <Text>DISCOVER QUIZZES</Text>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 50,
+            }}
+          >
+            <Text>Newest Quiz! (Move to explore page)</Text>
+            <Button
+              title={"View newest quiz!"}
+              onPress={() => setViewQuizModal(true)}
+            />
+          </View>
           <TabView
             navigationState={{ index, routes }}
             renderScene={renderScene}
@@ -137,6 +154,84 @@ const Discover = ({ navigation }: DiscoverScreenProps) => {
           />
         </View>
       </View>
+      {viewQuizModal && (
+        <Modal
+          style={{
+            backgroundColor: "white",
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+            height: "70%",
+            width: "100%",
+            position: "absolute",
+            margin: 0,
+            bottom: 0,
+          }}
+          backdropOpacity={0.5}
+          onBackdropPress={() => setViewQuizModal(false)}
+          animationIn={"slideInUp"}
+          animationOut={"slideOutUp"}
+          onSwipeComplete={() => setViewQuizModal(false)}
+          isVisible
+        >
+          <View
+            style={{
+              height: "100%",
+              position: "relative",
+            }}
+          >
+            <View
+              style={{
+                position: "absolute",
+                zIndex: 9,
+                right: 0,
+              }}
+            >
+              <Button
+                title={"Close Modal"}
+                onPress={() => setViewQuizModal(false)}
+              />
+            </View>
+
+            <Image
+              source={require("../../../assets/jpgs/elephant-g554b29d92_1920.jpg")}
+              style={{
+                height: 200,
+                width: "100%",
+                borderTopLeftRadius: 40,
+                borderTopRightRadius: 40,
+              }}
+            />
+
+            <View style={{ backgroundColor: "gray" }}>
+              <Text>AUTHOR DESC</Text>
+              <Text>Image</Text>
+              <Text>Name: </Text>
+              <Text>Role: </Text>
+            </View>
+            <Text>APPROVAL RATING AVERAGE</Text>
+            <Text>QUIZ DESCRIPTION</Text>
+            <Text>DATE CREATED</Text>
+            <View
+              style={{
+                justifyContent: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Button
+                title={"Take Quiz!"}
+                onPress={() => {
+                  setViewQuizModal(false);
+                  navigation.navigate("Quiz");
+                }}
+              />
+              <Button
+                title={"Save for later?"}
+                onPress={() => setViewQuizModal(false)}
+              />
+            </View>
+          </View>
+        </Modal>
+      )}
     </SafeAreaView>
   );
 };

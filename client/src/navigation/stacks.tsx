@@ -6,17 +6,17 @@ import {
   AuthStackParams,
   DashboardStackParams,
   DiscoverStackParams,
-  HelpStackParams,
   MainStackParams,
   OnboardStackParams,
   QuizStackParams,
+  ResourcesStackParams,
 } from "./types";
 import Register from "../screens/Auth/Register/Register";
 import Login from "../screens/Auth/Login/Login";
 import Department from "../screens/Onboarding/Department";
 import Role from "../screens/Onboarding/Role";
 import Discover from "../screens/Main/Discover/Discover";
-import Help from "../screens/Main/Help/Help";
+import Resources from "../screens/Main/Resources/Resources";
 import PushRequest from "../screens/Onboarding/PushRequest";
 import Statistics from "../screens/Main/Dashboard/Statistics";
 import Quiz from "../screens/Main/Quiz/Quiz";
@@ -32,16 +32,16 @@ const mainScreensOptions = {
   headerShown: false,
 };
 
-const HelpStack = createNativeStackNavigator<HelpStackParams>();
-export const HelpStackNavigator = () => {
+const ResourcesStack = createNativeStackNavigator<ResourcesStackParams>();
+export const ResourcesStackNavigator = () => {
   return (
-    <HelpStack.Navigator>
-      <HelpStack.Screen
+    <ResourcesStack.Navigator>
+      <ResourcesStack.Screen
         options={mainScreensOptions}
         name={"Main"}
-        component={Help}
+        component={Resources}
       />
-    </HelpStack.Navigator>
+    </ResourcesStack.Navigator>
   );
 };
 

@@ -4,10 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 interface Props {}
 
-const Help = ({}: Props) => {
+const Resources = ({}: Props) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Help</Text>
+      <Text>Resources</Text>
     </SafeAreaView>
   );
 };
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default Help;
+export default Resources;

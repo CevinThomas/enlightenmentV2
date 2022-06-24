@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Image,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import Modal from "react-native-modal";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DashboardScreenProps } from "../../../navigation/types";
@@ -14,54 +7,99 @@ import { DashboardScreenProps } from "../../../navigation/types";
 const Dashboard = ({ navigation }: DashboardScreenProps) => {
   const [viewQuizModal, setViewQuizModal] = useState(false);
 
-  const dimensions = useWindowDimensions();
-
   return (
     <SafeAreaView style={styles.container}>
-      <Text>WELCOME BACK</Text>
-      <Text>STATISTICS</Text>
-      <Text>0% - 22% - 32</Text>
-      <Button
-        title={"View all statistics"}
-        onPress={() => navigation.navigate("Statistics")}
-      />
-      <View>
-        <Text>Ongoing quiz</Text>
-        <Button
-          title={"Continue quiz"}
-          onPress={() => {
-            navigation.navigate("Quiz");
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            height: 100,
+            width: 100,
+            backgroundColor: "gray",
+            borderRadius: 400,
           }}
-        />
-        <Text>Newest Quiz! (Move to explore page)</Text>
+        ></View>
+        <Text>PROFILE IMAGE</Text>
+      </View>
+
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 50,
+        }}
+      >
+        <Text>STATISTICS</Text>
+        <Text>0% - 22% - 32</Text>
         <Button
-          title={"View newest quiz!"}
-          onPress={() => setViewQuizModal(true)}
+          title={"View all statistics"}
+          onPress={() => navigation.navigate("Statistics")}
         />
-        <Text>History of Results</Text>
-        <Text>Results 1</Text>
-        <Text>Results 2</Text>
-        <Text>Results 3</Text>
-        <Button
-          title={"View all results"}
-          onPress={() => navigation.navigate("Results")}
-        />
-        <Text>Top Performers (Scoreboard)?</Text>
+      </View>
+
+      <View
+        style={{
+          marginTop: 50,
+        }}
+      >
         <View
           style={{
             justifyContent: "center",
-            height: 100,
-            backgroundColor: "blue",
+            alignItems: "center",
           }}
         >
-          <Text style={{ color: "white" }}>Coworker 1</Text>
-          <Text style={{ color: "white" }}>Coworker 2</Text>
-          <Text style={{ color: "white" }}>Coworker 3</Text>
+          <Text>Ongoing quiz</Text>
+          <Button
+            title={"Continue quiz"}
+            onPress={() => {
+              navigation.navigate("Quiz");
+            }}
+          />
         </View>
-        <Button
-          title={"View scoreboards"}
-          onPress={() => navigation.navigate("Scoreboard")}
-        />
+
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 50,
+          }}
+        >
+          <Text>Newest Quiz! (Move to explore page)</Text>
+          <Button
+            title={"View newest quiz!"}
+            onPress={() => setViewQuizModal(true)}
+          />
+        </View>
+
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 50,
+          }}
+        >
+          <Text>Top Performers (Scoreboard)?</Text>
+          <View
+            style={{
+              justifyContent: "center",
+              height: 100,
+              backgroundColor: "blue",
+            }}
+          >
+            <Text style={{ color: "white" }}>Coworker 1</Text>
+            <Text style={{ color: "white" }}>Coworker 2</Text>
+            <Text style={{ color: "white" }}>Coworker 3</Text>
+          </View>
+          <Button
+            title={"View scoreboards"}
+            onPress={() => navigation.navigate("Scoreboard")}
+          />
+        </View>
+
         {viewQuizModal && (
           <Modal
             style={{

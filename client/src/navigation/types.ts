@@ -38,7 +38,7 @@ export type DiscoverStackParams = {
   Category: undefined;
 };
 
-export type HelpStackParams = {
+export type ResourcesStackParams = {
   Main: undefined;
 };
 

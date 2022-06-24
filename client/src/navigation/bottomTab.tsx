@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   DashboardStackNavigator,
   ExploreStackNavigator,
-  HelpStackNavigator,
+  ResourcesStackNavigator,
 } from "./stacks";
 import React from "react";
 
@@ -19,8 +19,8 @@ export function BottomTabs() {
       }}
     >
       <Tab.Screen name="Dashboard" component={DashboardStackNavigator} />
-      <Tab.Screen name="Explore" component={ExploreStackNavigator} />
-      <Tab.Screen name="Help" component={HelpStackNavigator} />
+      <Tab.Screen name="Discover" component={ExploreStackNavigator} />
+      <Tab.Screen name="Resources" component={ResourcesStackNavigator} />
     </Tab.Navigator>
   );
 }
